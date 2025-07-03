@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -74,15 +73,8 @@
         }
 
         @keyframes wave {
-
-            0%,
-            100% {
-                transform: scaleY(1);
-            }
-
-            50% {
-                transform: scaleY(1.5);
-            }
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.5); }
         }
 
         /* Light Theme Styles */
@@ -159,15 +151,8 @@
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: .7;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: .7; }
         }
 
         .popup {
@@ -301,25 +286,11 @@
 
         /* Animação para as barras do visualizador de som */
         @keyframes sound-wave {
-            0% {
-                height: 10%;
-            }
-
-            25% {
-                height: 60%;
-            }
-
-            50% {
-                height: 30%;
-            }
-
-            75% {
-                height: 80%;
-            }
-
-            100% {
-                height: 10%;
-            }
+            0% { height: 10%; }
+            25% { height: 60%; }
+            50% { height: 30%; }
+            75% { height: 80%; }
+            100% { height: 10%; }
         }
 
         /* Responsividade para mobile */
@@ -327,72 +298,69 @@
             header {
                 padding: 1rem;
             }
-
+            
             .flex-wrap {
                 gap: 0.5rem;
             }
-
-            .category-btn,
-            #stop-all-btn {
+            
+            .category-btn, #stop-all-btn {
                 padding: 0.6rem 1rem;
                 font-size: 0.9rem;
             }
-
+            
             #unlock-btn {
                 padding: 0.6rem;
                 font-size: 0.95rem;
             }
-
+            
             #sounds-container {
                 grid-template-columns: 1fr;
                 gap: 1.2rem;
             }
-
+            
             .sound-card {
                 padding: 1.5rem;
             }
-
+            
             .popup {
                 padding: 1.5rem;
                 width: 95%;
             }
-
+            
             .popup-footer {
                 flex-direction: column;
             }
-
+            
             .popup-btn {
                 width: 100%;
             }
         }
 
         @media (max-width: 480px) {
-
-            #user-status,
-            #theme-toggle {
+            #user-status, #theme-toggle {
                 display: none;
             }
-
+            
             .category-btn span {
                 display: none;
             }
-
+            
             .category-btn i {
                 margin-right: 0;
             }
-
+            
             #stop-all-btn span {
                 display: none;
             }
-
+            
             #unlock-btn span:first-child {
                 display: none;
             }
-
+            
             #unlock-btn span:last-child {
                 display: inline;
             }
-
+            
             .popup-title {
                 font-size: 1.3rem;
             }
@@ -414,24 +382,19 @@
                     </div>
                 </div>
                 <div>
-                    <h1
-                        class="text-2xl font-bold bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">
-                        RelaX</h1>
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">RelaX</h1>
                     <div class="text-sm text-orange-300">Sons relaxantes para sua mente</div>
                 </div>
             </div>
             <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
-                <button id="login-btn"
-                    class="glass-effect px-4 py-2 rounded-lg text-white flex items-center space-x-2 text-sm sm:text-base">
+                <button id="login-btn" class="glass-effect px-4 py-2 rounded-lg text-white flex items-center space-x-2 text-sm sm:text-base">
                     <i class="fas fa-user"></i>
                     <span>Entrar</span>
                     <div id="login-spinner" class="loading-spinner hidden"></div>
                 </button>
                 <span id="user-info" class="text-sm text-orange-300 hidden order-3 sm:order-2"></span>
-                <button id="theme-toggle"
-                    class="glass-effect w-10 h-10 rounded-full flex items-center justify-center text-xl">🌙</button>
-                <div id="user-status" class="glass-effect px-3 py-1.5 rounded-lg text-sm text-orange-300 order-4">Trial
-                    Gratuito</div>
+                <button id="theme-toggle" class="glass-effect w-10 h-10 rounded-full flex items-center justify-center text-xl">🌙</button>
+                <div id="user-status" class="glass-effect px-3 py-1.5 rounded-lg text-sm text-orange-300 order-4">Trial Gratuito</div>
                 <button id="unlock-btn"
                     class="gradient-accent px-4 py-2 rounded-xl font-medium text-white hover:opacity-90 transition text-sm sm:text-base order-5 gradient-accent-hover">
                     <span class="hidden sm:inline">Desbloquear Completo - R$ 3,99</span>
@@ -445,15 +408,9 @@
     <!-- Wave Divider -->
     <div class="wave-divider">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path
-                d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-                opacity=".25" fill="#ff8c42"></path>
-            <path
-                d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-                opacity=".5" fill="#ff8c42"></path>
-            <path
-                d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-                fill="#ff8c42"></path>
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#ff8c42"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#ff8c42"></path>
+            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#ff8c42"></path>
         </svg>
     </div>
 
@@ -463,8 +420,7 @@
         <div class="text-center mb-10">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Encontre Sua Paz Interior</h2>
             <p class="text-lg text-orange-200 max-w-2xl mx-auto mb-8">
-                Sons relaxantes para meditação, foco, sono e rejuvenescimento. Desconecte-se do estresse e reconecte-se
-                com sua essência.
+                Sons relaxantes para meditação, foco, sono e rejuvenescimento. Desconecte-se do estresse e reconecte-se com sua essência.
             </p>
         </div>
 
@@ -513,9 +469,7 @@
                         <div class="w-10 h-10 gradient-accent rounded-full flex items-center justify-center">
                             <i class="fas fa-cloud text-white"></i>
                         </div>
-                        <h3
-                            class="text-xl font-bold bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">
-                            RelaX</h3>
+                        <h3 class="text-xl font-bold bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">RelaX</h3>
                     </div>
                     <p class="text-sm text-orange-300 mt-2">Sua jornada para o relaxamento começa aqui</p>
                 </div>
@@ -532,7 +486,7 @@
                 </div>
             </div>
             <div class="mt-8 pt-6 border-t border-orange-800 text-center text-sm text-orange-400">
-                &copy; RelaXapp. Todos os direitos reservados.
+                &copy; 2023 RelaX. Todos os direitos reservados.
             </div>
         </div>
     </footer>
@@ -627,9 +581,8 @@
                     Já fiz o pagamento
                 </button>
                 <div id="code-section" class="hidden space-y-4">
-                    <input type="text" id="access-code"
-                        class="w-full p-4 rounded-xl glass-effect text-white placeholder-orange-400"
-                        placeholder="Digite seu código...">
+                    <input type="text" id="access-code" class="w-full p-4 rounded-xl glass-effect text-white placeholder-orange-400"
+                        placeholder="Digite seu código RLX...">
 
                     <div class="flex gap-3">
                         <button id="whatsapp-btn" class="whatsapp-btn flex-1 py-3 rounded-xl">
@@ -653,8 +606,7 @@
     <div id="trial-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
         <div class="glass-effect rounded-2xl p-8 max-w-md w-full mx-4 border border-red-600">
             <div class="text-center mb-6">
-                <div
-                    class="w-20 h-20 bg-gradient-to-r from-red-600 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="w-20 h-20 bg-gradient-to-r from-red-600 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-clock text-white text-2xl"></i>
                 </div>
                 <h2 class="text-2xl font-bold mb-2">Trial Expirado</h2>
@@ -982,22 +934,27 @@
             }
         });
 
-        // MODO CLARO/ESCURO
+        // MODO CLARO/ESCURO - TEMA DARK COMO PADRÃO
         const themeBtn = document.getElementById('theme-toggle');
         const body = document.body;
-        const savedTheme = localStorage.getItem('relax_theme') || 'dark';
-
-        if (savedTheme === 'light') {
-            body.classList.add('light');
-            themeBtn.textContent = '☀️';
+        
+        // Inicializar com tema dark como padrão
+        const savedTheme = localStorage.getItem('relax_theme');
+        
+        // Se não houver tema salvo, ou se for light, forçamos o dark como padrão
+        if (!savedTheme || savedTheme === 'dark') {
+            body.classList.remove('light');
+            themeBtn.textContent = '☀️'; // Botão mostra sol para alternar para light
+            localStorage.setItem('relax_theme', 'dark');
         } else {
-            themeBtn.textContent = '🌙';
+            body.classList.add('light');
+            themeBtn.textContent = '🌙'; // Botão mostra lua para alternar para dark
         }
 
         themeBtn.onclick = () => {
             const isLight = body.classList.toggle('light');
             localStorage.setItem('relax_theme', isLight ? 'light' : 'dark');
-            themeBtn.textContent = isLight ? '☀️' : '🌙';
+            themeBtn.textContent = isLight ? '🌙' : '☀️';
         };
 
         // Update user status
@@ -1303,7 +1260,7 @@
 
             // Botão do WhatsApp para pegar código
             document.getElementById('whatsapp-btn').addEventListener('click', () => {
-                const message = encodeURIComponent('Olá, me escrevi no Relaxapp. Gostaria que me enviasse o código único para que eu possa me tornar Premium.');
+                const message = encodeURIComponent('Olá, me escrevi no app. Gostaria que me enviasse o código único para que eu possa me tornar Premium.');
                 window.open(`https://wa.me/5599991948817?text=${message}`, '_blank');
             });
         });
