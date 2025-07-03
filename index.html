@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RelaX - Sons Relaxantes</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        .gradient-accent {
+            background: linear-gradient(135deg, #ff8c42 0%, #ff6b1a 100%);
+        }
+
+        .gradient-accent-hover:hover {
+            background: linear-gradient(135deg, #e6733a 0%, #e05f17 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255, 107, 26, 0.25);
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            border-radius: 10px;
+            background: #444;
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #ff8c42;
+            cursor: pointer;
+            box-shadow: 0 0 8px rgba(255, 140, 66, 0.5);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #ff8c42;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 8px rgba(255, 140, 66, 0.5);
+        }
+
+        .sound-wave {
+            animation: wave 1.5s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                transform: scaleY(1);
+            }
+
+            50% {
+                transform: scaleY(1.5);
+            }
+        }
+
+        /* Light Theme Styles */
+        body.light {
+            background: linear-gradient(135deg, #fdf6f0 0%, #fcebdf 100%);
+            color: #1e293b;
+        }
+
+        body.light .gradient-bg {
+            background: linear-gradient(135deg, #fdf6f0 0%, #fcebdf 100%);
+        }
+
+        body.light .bg-gray-800 {
+            background-color: #f8f0e8 !important;
+            color: #1e293b;
+        }
+
+        body.light .bg-gray-900 {
+            background-color: #ffffff !important;
+            color: #1e293b;
+            border: 1px solid #e2d8d0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light .bg-gray-700 {
+            background-color: #e8e0d8 !important;
+            color: #1e293b;
+        }
+
+        body.light .text-white {
+            color: #1e293b !important;
+        }
+
+        body.light .text-gray-400 {
+            color: #7a6c61 !important;
+        }
+
+        body.light .border-gray-700 {
+            border-color: #d8d0c8 !important;
+        }
+
+        body.light .card-hover:hover {
+            box-shadow: 0 10px 20px rgba(255, 140, 66, 0.2);
+        }
+
+        .glass-effect {
+            background: rgba(45, 45, 45, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-effect-light {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .wave-divider {
+            position: relative;
+            height: 50px;
+            overflow: hidden;
+        }
+
+        .wave-divider svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .7;
+            }
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #2d2d2d;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            z-index: 1000;
+            width: 90%;
+            max-width: 450px;
+            border: 1px solid #ff8c42;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ff8c42;
+        }
+
+        .popup-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ff8c42 0%, #ff6b1a 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .popup-close {
+            background: none;
+            border: none;
+            color: #ffaa70;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .popup-close:hover {
+            color: #fff;
+        }
+
+        .popup-content {
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .popup-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        .popup-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .popup-btn-primary {
+            background: linear-gradient(135deg, #ff8c42 0%, #ff6b1a 100%);
+            color: #fff;
+        }
+
+        .popup-btn-primary:hover {
+            opacity: 0.9;
+            box-shadow: 0 5px 15px rgba(255, 140, 66, 0.3);
+        }
+
+        .popup-btn-secondary {
+            background: #444;
+            color: #fff;
+        }
+
+        .popup-btn-secondary:hover {
+            background: #555;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 500;
+            transition: background 0.3s;
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .sound-visualizer {
+            display: flex;
+            align-items: flex-end;
+            height: 40px;
+            gap: 4px;
+            margin-top: 10px;
+        }
+
+        .sound-bar {
+            width: 4px;
+            background: #ff8c42;
+            border-radius: 2px;
+            transition: height 0.3s ease;
+        }
+
+        /* Animação para as barras do visualizador de som */
+        @keyframes sound-wave {
+            0% {
+                height: 10%;
+            }
+
+            25% {
+                height: 60%;
+            }
+
+            50% {
+                height: 30%;
+            }
+
+            75% {
+                height: 80%;
+            }
+
+            100% {
+                height: 10%;
+            }
+        }
+
+        /* Responsividade para mobile */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .flex-wrap {
+                gap: 0.5rem;
+            }
+
+            .category-btn,
+            #stop-all-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            #unlock-btn {
+                padding: 0.6rem;
+                font-size: 0.95rem;
+            }
+
+            #sounds-container {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .sound-card {
+                padding: 1.5rem;
+            }
+
+            .popup {
+                padding: 1.5rem;
+                width: 95%;
+            }
+
+            .popup-footer {
+                flex-direction: column;
+            }
+
+            .popup-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            #user-status,
+            #theme-toggle {
+                display: none;
+            }
+
+            .category-btn span {
+                display: none;
+            }
+
+            .category-btn i {
+                margin-right: 0;
+            }
+
+            #stop-all-btn span {
+                display: none;
+            }
+
+            #unlock-btn span:first-child {
+                display: none;
+            }
+
+            #unlock-btn span:last-child {
+                display: inline;
+            }
+
+            .popup-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="gradient-bg min-h-screen text-white">
+    <!-- Header -->
+    <header class="py-4 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="flex items-center space-x-4">
+                <div class="w-14 h-14 gradient-accent rounded-full flex items-center justify-center relative">
+                    <i class="fas fa-cloud text-white text-xl"></i>
+                    <div class="absolute -bottom-1 flex space-x-1">
+                        <div class="w-2 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0s"></div>
+                        <div class="w-2 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                        <div class="w-2 h-3 bg-white rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                    </div>
+                </div>
+                <div>
+                    <h1
+                        class="text-2xl font-bold bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">
+                        RelaX</h1>
+                    <div class="text-sm text-orange-300">Sons relaxantes para sua mente</div>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                <button id="login-btn"
+                    class="glass-effect px-4 py-2 rounded-lg text-white flex items-center space-x-2 text-sm sm:text-base">
+                    <i class="fas fa-user"></i>
+                    <span>Entrar</span>
+                    <div id="login-spinner" class="loading-spinner hidden"></div>
+                </button>
+                <span id="user-info" class="text-sm text-orange-300 hidden order-3 sm:order-2"></span>
+                <button id="theme-toggle"
+                    class="glass-effect w-10 h-10 rounded-full flex items-center justify-center text-xl">🌙</button>
+                <div id="user-status" class="glass-effect px-3 py-1.5 rounded-lg text-sm text-orange-300 order-4">Trial
+                    Gratuito</div>
+                <button id="unlock-btn"
+                    class="gradient-accent px-4 py-2 rounded-xl font-medium text-white hover:opacity-90 transition text-sm sm:text-base order-5 gradient-accent-hover">
+                    <span class="hidden sm:inline">Desbloquear Completo - R$ 3,99</span>
+                    <span class="sm:hidden">Premium - R$ 3,99</span>
+                </button>
+            </div>
+        </div>
+        <div id="error-container" class="max-w-6xl mx-auto mt-2"></div>
+    </header>
+
+    <!-- Wave Divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path
+                d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                opacity=".25" fill="#ff8c42"></path>
+            <path
+                d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                opacity=".5" fill="#ff8c42"></path>
+            <path
+                d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                fill="#ff8c42"></path>
+        </svg>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+        <!-- Hero Section -->
+        <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Encontre Sua Paz Interior</h2>
+            <p class="text-lg text-orange-200 max-w-2xl mx-auto mb-8">
+                Sons relaxantes para meditação, foco, sono e rejuvenescimento. Desconecte-se do estresse e reconecte-se
+                com sua essência.
+            </p>
+        </div>
+
+        <!-- Categories -->
+        <div class="mb-8">
+            <div class="flex flex-wrap gap-3 mb-6 justify-center">
+                <button class="category-btn glass-effect text-white px-4 py-3 rounded-xl font-medium flex items-center"
+                    data-category="all">
+                    <i class="fas fa-th-large mr-2 text-orange-300"></i>Todos
+                </button>
+                <button class="category-btn glass-effect text-white px-4 py-3 rounded-xl font-medium flex items-center"
+                    data-category="nature">
+                    <i class="fas fa-leaf mr-2 text-green-400"></i>Natureza
+                </button>
+                <button class="category-btn glass-effect text-white px-4 py-3 rounded-xl font-medium flex items-center"
+                    data-category="relax">
+                    <i class="fas fa-moon mr-2 text-yellow-300"></i>Relaxamento
+                </button>
+                <button class="category-btn glass-effect text-white px-4 py-3 rounded-xl font-medium flex items-center"
+                    data-category="focus">
+                    <i class="fas fa-bullseye mr-2 text-blue-400"></i>Foco
+                </button>
+                <button class="category-btn glass-effect text-white px-4 py-3 rounded-xl font-medium flex items-center"
+                    data-category="sleep">
+                    <i class="fas fa-bed mr-2 text-purple-400"></i>Sono
+                </button>
+                <button id="stop-all-btn"
+                    class="glass-effect text-white px-4 py-3 rounded-xl font-medium flex items-center bg-gradient-to-r from-red-600 to-orange-600">
+                    <i class="fas fa-stop mr-2"></i>Parar Todos
+                </button>
+            </div>
+        </div>
+
+        <!-- Sounds Grid -->
+        <div id="sounds-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Sounds will be dynamically generated -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-effect mt-16 py-8 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 gradient-accent rounded-full flex items-center justify-center">
+                            <i class="fas fa-cloud text-white"></i>
+                        </div>
+                        <h3
+                            class="text-xl font-bold bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">
+                            RelaX</h3>
+                    </div>
+                    <p class="text-sm text-orange-300 mt-2">Sua jornada para o relaxamento começa aqui</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="glass-effect w-10 h-10 rounded-full flex items-center justify-center">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="glass-effect w-10 h-10 rounded-full flex items-center justify-center">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="glass-effect w-10 h-10 rounded-full flex items-center justify-center">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-orange-800 text-center text-sm text-orange-400">
+                &copy; RelaXapp. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
+        <div class="glass-effect rounded-2xl p-8 max-w-md w-full mx-4 border border-orange-500">
+            <div class="text-center mb-6">
+                <div class="w-20 h-20 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-unlock text-white text-2xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2">Desbloquear RelaX</h2>
+                <p class="text-orange-300">Acesso vitalício a todos os sons</p>
+            </div>
+
+            <div class="space-y-4 mb-6">
+                <div class="glass-effect p-4 rounded-xl">
+                    <div class="flex items-center justify-between">
+                        <span>Acesso Completo</span>
+                        <span class="font-bold text-xl text-orange-300">R$ 3,99</span>
+                    </div>
+                </div>
+                <div class="text-sm text-orange-300 pl-2">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                        <span>Todos os sons ilimitados</span>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                        <span>Sem limite de tempo</span>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                        <span>Novos sons mensalmente</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                        <span>Suporte prioritário</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <button id="pix-payment-btn"
+                    class="w-full gradient-accent text-white py-3 rounded-xl font-medium hover:opacity-90 transition gradient-accent-hover">
+                    <i class="fas fa-qrcode mr-2"></i>Pagar com Pix
+                </button>
+                <button id="close-payment-btn"
+                    class="w-full glass-effect text-white py-3 rounded-xl font-medium hover:bg-orange-900 transition">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pix Payment Modal -->
+    <div id="pix-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
+        <div class="glass-effect rounded-2xl p-8 max-w-md w-full mx-4 border border-orange-500">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold mb-2">Pagamento via Pix</h2>
+                <p class="text-orange-300">Escaneie o QR Code ou copie a chave</p>
+            </div>
+
+            <div class="text-center mb-6">
+                <div class="w-56 h-56 bg-white rounded-xl mx-auto mb-4 flex items-center justify-center p-4">
+                    <img src="https://i.postimg.cc/cJ6fWYFV/qr-code-pagamento.png" alt="QR Code Pix"
+                        class="w-full h-full object-contain rounded-lg">
+                </div>
+                <div class="text-2xl font-bold text-orange-300 mb-2">R$ 3,99</div>
+            </div>
+
+            <div class="space-y-4 mb-6">
+                <div class="glass-effect p-4 rounded-xl">
+                    <div class="text-sm text-orange-300 mb-1">Chave Pix:</div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-mono">68651145-b883-47c8-99e7-c0eec325fe31</span>
+                        <button id="copy-pix-btn" class="text-orange-300 hover:text-white">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="glass-effect p-4 rounded-xl text-sm">
+                    <div class="text-orange-300 mb-1">Beneficiário:</div>
+                    <div>Sydiney Sudário da Silva</div>
+                    <div class="text-orange-300">CPF: •••.467.023-••</div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <button id="confirm-payment-btn"
+                    class="w-full gradient-accent text-white py-3 rounded-xl font-medium hover:opacity-90 transition gradient-accent-hover">
+                    Já fiz o pagamento
+                </button>
+                <div id="code-section" class="hidden space-y-4">
+                    <input type="text" id="access-code"
+                        class="w-full p-4 rounded-xl glass-effect text-white placeholder-orange-400"
+                        placeholder="Digite seu código...">
+
+                    <div class="flex gap-3">
+                        <button id="whatsapp-btn" class="whatsapp-btn flex-1 py-3 rounded-xl">
+                            <i class="fab fa-whatsapp"></i> Pegar Código
+                        </button>
+                        <button id="verify-code-btn"
+                            class="gradient-accent text-white flex-1 py-3 rounded-xl font-medium gradient-accent-hover">
+                            Validar Código
+                        </button>
+                    </div>
+                </div>
+                <button id="close-pix-btn"
+                    class="w-full glass-effect text-white py-3 rounded-xl font-medium hover:bg-orange-900 transition">
+                    Voltar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trial Ended Modal -->
+    <div id="trial-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
+        <div class="glass-effect rounded-2xl p-8 max-w-md w-full mx-4 border border-red-600">
+            <div class="text-center mb-6">
+                <div
+                    class="w-20 h-20 bg-gradient-to-r from-red-600 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-clock text-white text-2xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2">Trial Expirado</h2>
+                <p class="text-orange-300">Seu tempo de 2 minutos terminou!</p>
+            </div>
+
+            <div class="space-y-4">
+                <button id="unlock-from-trial-btn"
+                    class="w-full gradient-accent text-white py-3 rounded-xl font-medium hover:opacity-90 transition gradient-accent-hover">
+                    Desbloquear por R$ 3,99
+                </button>
+                <button id="close-trial-btn"
+                    class="w-full glass-effect text-white py-3 rounded-xl font-medium hover:bg-orange-900 transition">
+                    Continuar trial com outro som
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Container -->
+    <div id="popup-container"></div>
+
+    <!-- Firebase v9 Modular -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+        import { getFirestore, collection, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+        // Verificar se está rodando localmente
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            console.warn('🔧 Modo de desenvolvimento local - verifique as configurações do Firebase');
+            console.info('📋 Certifique-se que o domínio localhost está autorizado no Firebase Console');
+        }
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBUj-m1W0WCCTQtiIAJDd75vZaPrMiApsI",
+            authDomain: "relax-a9aeb.firebaseapp.com",
+            projectId: "relax-a9aeb",
+            storageBucket: "relax-a9aeb.firebasestorage.app",
+            messagingSenderId: "893788718423",
+            appId: "1:893788718423:web:c823a720d7d5f549482a12",
+            measurementId: "G-PMGFXHJP24"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Disponibilizar globalmente
+        window.firebaseAuth = auth;
+        window.firebaseDb = db;
+        window.firebaseModules = { signInWithPopup, GoogleAuthProvider, signOut, doc, getDoc, updateDoc, collection };
+
+        // Função para exibir popups estilizados
+        function showPopup(title, message, type = 'info', buttons = []) {
+            // Remover popups existentes
+            const existingPopups = document.querySelectorAll('.popup-overlay');
+            existingPopups.forEach(popup => popup.remove());
+
+            const popupOverlay = document.createElement('div');
+            popupOverlay.className = 'popup-overlay';
+
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+
+            // Cores baseadas no tipo
+            let icon, iconColor;
+            switch (type) {
+                case 'success':
+                    icon = 'fa-check-circle';
+                    iconColor = 'text-green-400';
+                    break;
+                case 'warning':
+                    icon = 'fa-exclamation-triangle';
+                    iconColor = 'text-yellow-400';
+                    break;
+                case 'error':
+                    icon = 'fa-times-circle';
+                    iconColor = 'text-red-400';
+                    break;
+                default:
+                    icon = 'fa-info-circle';
+                    iconColor = 'text-orange-400';
+            }
+
+            popup.innerHTML = `
+                <div class="popup-header">
+                    <div class="flex items-center">
+                        <i class="fas ${icon} ${iconColor} mr-2 text-xl"></i>
+                        <h3 class="popup-title">${title}</h3>
+                    </div>
+                    <button class="popup-close">&times;</button>
+                </div>
+                <div class="popup-content">
+                    <p>${message}</p>
+                </div>
+                <div class="popup-footer">
+                    ${buttons.length ?
+                    buttons.map(btn => `
+                            <button class="popup-btn ${btn.primary ? 'popup-btn-primary' : 'popup-btn-secondary'}" 
+                                     data-action="${btn.action || 'close'}">${btn.text}</button>
+                        `).join('') :
+                    '<button class="popup-btn popup-btn-primary" data-action="close">OK</button>'
+                }
+                </div>
+            `;
+
+            popupOverlay.appendChild(popup);
+            document.getElementById('popup-container').appendChild(popupOverlay);
+
+            // Adicionar event listeners
+            popup.querySelector('.popup-close').addEventListener('click', () => {
+                popupOverlay.remove();
+            });
+
+            popup.querySelectorAll('.popup-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const action = btn.dataset.action;
+                    if (action === 'close') {
+                        popupOverlay.remove();
+                    }
+                    // Aqui você pode adicionar outras ações se necessário
+                });
+            });
+        }
+
+        // Tratamento melhorado de erros
+        function showError(message, details = '') {
+            showPopup('Erro', message + (details ? `<br><small>${details}</small>` : ''), 'error');
+        }
+
+        function clearErrors() {
+            const popups = document.querySelectorAll('.popup-overlay');
+            popups.forEach(popup => popup.remove());
+        }
+
+        // LOGIN com tratamento melhorado de erros
+        const loginBtn = document.getElementById('login-btn');
+        const userInfo = document.getElementById('user-info');
+        const loginSpinner = document.getElementById('login-spinner');
+
+        // Configuração melhorada do login
+        loginBtn.onclick = async () => {
+            clearErrors();
+            loginSpinner.classList.remove('hidden');
+            loginBtn.disabled = true;
+
+            try {
+                const provider = new GoogleAuthProvider();
+                provider.setCustomParameters({
+                    prompt: 'select_account'
+                });
+
+                const result = await signInWithPopup(auth, provider);
+                console.log('✅ Login bem-sucedido:', result.user.email);
+                showPopup('Sucesso', 'Login realizado com sucesso!', 'success');
+
+            } catch (error) {
+                console.error('❌ Erro no login:', error);
+
+                let errorMessage = 'Falha no login. Tente novamente.';
+                let errorDetails = '';
+
+                switch (error.code) {
+                    case 'auth/popup-closed-by-user':
+                        errorMessage = 'Login cancelado pelo usuário';
+                        errorDetails = 'A janela de login foi fechada antes da conclusão.';
+                        break;
+                    case 'auth/popup-blocked':
+                        errorMessage = 'Pop-up bloqueado pelo navegador';
+                        errorDetails = 'Permita pop-ups para este site e tente novamente.';
+                        break;
+                    case 'auth/unauthorized-domain':
+                        errorMessage = 'Domínio não autorizado';
+                        errorDetails = 'Este domínio não está autorizado no Firebase. Entre em contato com o suporte.';
+                        break;
+                    case 'auth/operation-not-allowed':
+                        errorMessage = 'Login com Google não habilitado';
+                        errorDetails = 'O método de autenticação não está configurado corretamente.';
+                        break;
+                    case 'auth/network-request-failed':
+                        errorMessage = 'Erro de conexão';
+                        errorDetails = 'Verifique sua conexão com a internet e tente novamente.';
+                        break;
+                    default:
+                        errorDetails = `Código: ${error.code} | ${error.message}`;
+                        if (window.location.hostname === 'localhost') {
+                            errorDetails += '\n\n💡 Executando localmente: Certifique-se que localhost está autorizado no Firebase Console.';
+                        }
+                }
+
+                showError(errorMessage, errorDetails);
+            } finally {
+                loginSpinner.classList.add('hidden');
+                loginBtn.disabled = false;
+            }
+        };
+
+        // Adicionar tratamento de erro mais detalhado
+        onAuthStateChanged(auth, (user) => {
+            try {
+                if (user) {
+                    console.log('✅ Usuário autenticado:', user.email);
+                    userInfo.innerText = `Olá, ${user.displayName || user.email}`;
+                    userInfo.classList.remove('hidden');
+                    loginBtn.style.display = 'none';
+                    clearErrors();
+                } else {
+                    console.log('👤 Usuário não autenticado');
+                    userInfo.classList.add('hidden');
+                    loginBtn.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('❌ Erro no estado de autenticação:', error);
+                showError('Erro ao verificar status de login', error.message);
+            }
+        });
+
+        // Disponibilizar funções globalmente
+        window.showError = showError;
+        window.clearErrors = clearErrors;
+        window.showPopup = showPopup;
+    </script>
+
+    <script>
+        // Sounds Database com os sons especificados
+        const soundFiles = {
+            'Trovão': 'thunder.mp3',
+            'Chuva': 'rain.mp3',
+            'Pássaros': 'birds.mp3',
+            'Oceano': 'ocean.mp3',
+            'Vento': 'wind.mp3',
+            'Fogueira': 'campfire.mp3',
+            'Meditação': 'lofi.mp3',
+            'Cachoeira': 'waterfall.mp3'
+        };
+
+        function getSoundUrl(soundName) {
+            return `./assets/sounds/${soundFiles[soundName]}`;
+        }
+
+        const soundsData = [
+            { id: 1, name: 'Trovão', icon: 'fas fa-bolt', category: 'nature', color: 'from-orange-500 to-amber-500' },
+            { id: 2, name: 'Chuva', icon: 'fas fa-cloud-rain', category: 'nature', color: 'from-blue-400 to-cyan-500' },
+            { id: 3, name: 'Pássaros', icon: 'fas fa-dove', category: 'nature', color: 'from-green-400 to-emerald-500' },
+            { id: 4, name: 'Oceano', icon: 'fas fa-water', category: 'nature', color: 'from-cyan-400 to-blue-500' },
+            { id: 5, name: 'Vento', icon: 'fas fa-wind', category: 'nature', color: 'from-gray-400 to-slate-500' },
+            { id: 6, name: 'Fogueira', icon: 'fas fa-fire', category: 'relax', color: 'from-orange-500 to-red-500' },
+            { id: 7, name: 'Meditação', icon: 'fas fa-om', category: 'relax', color: 'from-purple-400 to-pink-500' },
+            { id: 8, name: 'Cachoeira', icon: 'fas fa-water', category: 'nature', color: 'from-blue-400 to-teal-500' }
+        ];
+
+        // App State
+        let currentCategory = 'all';
+        let isPremium = localStorage.getItem('relax_premium') === 'true';
+        let trialUsage = JSON.parse(localStorage.getItem('relax_trial') || '{}');
+        let activeAudios = {}; // Para armazenar todos os áudios ativos
+        let trialTimers = {}; // Para armazenar os timers de trial
+
+        // VERIFICACAO DE CÓDIGO
+        const codes = [
+            "RLXQ55", "RLX2u8", "RLXb#v", "RLX0GJ", "RLXv6f", "RLXmZt", "RLX$sJ", "RLXePY", "RLXGag", "RLX3#A",
+            "RLX4Wq", "RLX21R", "RLXSc4", "RLXH@t", "RLXrK8", "RLXwFg", "RLX7Tm", "RLX$Q9", "RLXja@", "RLXn87"
+        ];
+
+        document.getElementById('confirm-payment-btn').addEventListener('click', () => {
+            document.getElementById('code-section').classList.remove('hidden');
+        });
+
+        document.getElementById('verify-code-btn').addEventListener('click', async () => {
+            const code = document.getElementById('access-code').value.trim();
+
+            if (!window.firebaseAuth?.currentUser) {
+                showPopup('Atenção', 'Por favor, faça login primeiro para validar o código!', 'warning');
+                return;
+            }
+
+            try {
+                const { doc, getDoc, updateDoc, collection } = window.firebaseModules;
+                const docRef = doc(window.firebaseDb, "accessCodes", code);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists() && !docSnap.data().used) {
+                    await updateDoc(docRef, {
+                        used: true,
+                        usedAt: new Date(),
+                        usedBy: window.firebaseAuth.currentUser.email
+                    });
+
+                    localStorage.setItem('relax_premium', 'true');
+                    isPremium = true;
+                    updateUserStatus();
+                    renderSounds();
+                    hidePixModal();
+                    clearErrors();
+                    showPopup('Sucesso', '🎉 Acesso Premium liberado!', 'success');
+                    console.log('✅ Código usado por', window.firebaseAuth.currentUser.email);
+                } else if (codes.includes(code)) {
+                    // Fallback para códigos locais
+                    localStorage.setItem('relax_premium', 'true');
+                    isPremium = true;
+                    updateUserStatus();
+                    renderSounds();
+                    hidePixModal();
+                    clearErrors();
+                    showPopup('Sucesso', '🎉 Acesso Premium liberado!', 'success');
+                } else {
+                    showPopup('Código Inválido', 'O código inserido não existe ou já foi utilizado.', 'error');
+                }
+            } catch (error) {
+                console.error('❌ Erro ao verificar código:', error);
+                // Fallback para verificação local
+                if (codes.includes(code)) {
+                    localStorage.setItem('relax_premium', 'true');
+                    isPremium = true;
+                    updateUserStatus();
+                    renderSounds();
+                    hidePixModal();
+                    clearErrors();
+                    showPopup('Sucesso', '🎉 Acesso Premium liberado!', 'success');
+                } else {
+                    showPopup('Erro', 'Tente novamente ou entre em contato com o suporte.', 'error');
+                }
+            }
+        });
+
+        // MODO CLARO/ESCURO
+        const themeBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+        const savedTheme = localStorage.getItem('relax_theme') || 'dark';
+
+        if (savedTheme === 'light') {
+            body.classList.add('light');
+            themeBtn.textContent = '☀️';
+        } else {
+            themeBtn.textContent = '🌙';
+        }
+
+        themeBtn.onclick = () => {
+            const isLight = body.classList.toggle('light');
+            localStorage.setItem('relax_theme', isLight ? 'light' : 'dark');
+            themeBtn.textContent = isLight ? '☀️' : '🌙';
+        };
+
+        // Update user status
+        function updateUserStatus() {
+            const statusEl = document.getElementById('user-status');
+            const unlockBtn = document.getElementById('unlock-btn');
+
+            if (isPremium) {
+                statusEl.textContent = '✓ Premium';
+                statusEl.classList.remove('text-amber-300');
+                statusEl.classList.add('text-green-400');
+                unlockBtn.style.display = 'none';
+            } else {
+                statusEl.textContent = 'Trial Gratuito';
+                statusEl.classList.remove('text-green-400');
+                statusEl.classList.add('text-amber-300');
+            }
+        }
+
+        // Create sound card HTML
+        function createSoundCard(sound) {
+            const hasUsedTrial = trialUsage[sound.id] || false;
+            const isLocked = !isPremium && hasUsedTrial;
+
+            return `
+                <div class="sound-card glass-effect rounded-2xl p-6 card-hover ${isLocked ? 'opacity-70' : ''}" data-id="${sound.id}" data-category="${sound.category}">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-gradient-to-r ${sound.color} rounded-xl flex items-center justify-center">
+                                <i class="${sound.icon} text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">${sound.name}</h3>
+                                <div class="text-sm text-orange-300">${getCategoryName(sound.category)}</div>
+                            </div>
+                        </div>
+                        ${isLocked ? '<i class="fas fa-lock text-red-400 text-xl"></i>' : ''}
+                    </div>
+                    
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <button class="play-btn w-12 h-12 glass-effect rounded-full flex items-center justify-center hover:bg-orange-700 transition-colors" ${isLocked ? 'disabled' : ''}>
+                                <i class="fas fa-play text-white"></i>
+                            </button>
+                            <div class="flex-1 mx-4">
+                                <input type="range" class="slider w-full volume-slider" min="0" max="100" value="50" ${isLocked ? 'disabled' : ''}>
+                            </div>
+                            <button class="loop-btn text-orange-300 hover:text-orange-100 transition-colors text-xl" ${isLocked ? 'disabled' : ''}>
+                                <i class="fas fa-redo"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="sound-visualizer">
+                            <div class="sound-bar" style="height: 20%; animation: sound-wave 1.2s infinite ease-in-out; animation-delay: 0s"></div>
+                            <div class="sound-bar" style="height: 40%; animation: sound-wave 1.2s infinite ease-in-out; animation-delay: 0.2s"></div>
+                            <div class="sound-bar" style="height: 60%; animation: sound-wave 1.2s infinite ease-in-out; animation-delay: 0.4s"></div>
+                            <div class="sound-bar" style="height: 80%; animation: sound-wave 1.2s infinite ease-in-out; animation-delay: 0.6s"></div>
+                            <div class="sound-bar" style="height: 60%; animation: sound-wave 1.2s infinite ease-in-out; animation-delay: 0.8s"></div>
+                            <div class="sound-bar" style="height: 40%; animation: sound-wave 1.2s infinite ease-in-out; animation-delay: 1.0s"></div>
+                        </div>
+                        
+                        ${!isPremium && !hasUsedTrial ? '<div class="text-xs text-amber-300 text-center">Trial: 2 minutos grátis</div>' : ''}
+                        ${isLocked ? '<div class="text-xs text-red-400 text-center">Trial expirado - Desbloqueie para continuar</div>' : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get category name
+        function getCategoryName(category) {
+            const names = {
+                nature: 'Natureza',
+                relax: 'Relaxamento',
+                focus: 'Foco',
+                sleep: 'Sono'
+            };
+            return names[category] || 'Geral';
+        }
+
+        // Render sounds
+        function renderSounds() {
+            const container = document.getElementById('sounds-container');
+            const filteredSounds = currentCategory === 'all'
+                ? soundsData
+                : soundsData.filter(sound => sound.category === currentCategory);
+
+            container.innerHTML = filteredSounds.map(createSoundCard).join('');
+            attachSoundEvents();
+        }
+
+        // Attach sound events
+        function attachSoundEvents() {
+            document.querySelectorAll('.sound-card').forEach(card => {
+                const soundId = parseInt(card.dataset.id);
+                const sound = soundsData.find(s => s.id === soundId);
+                const playBtn = card.querySelector('.play-btn');
+                const volumeSlider = card.querySelector('.volume-slider');
+                const loopBtn = card.querySelector('.loop-btn');
+
+                if (playBtn && !playBtn.disabled) {
+                    playBtn.addEventListener('click', () => toggleSound(sound, playBtn));
+                }
+
+                if (volumeSlider && !volumeSlider.disabled) {
+                    volumeSlider.addEventListener('input', (e) => {
+                        if (activeAudios[soundId]) {
+                            activeAudios[soundId].audio.volume = e.target.value / 100;
+                        }
+                    });
+                }
+
+                if (loopBtn && !loopBtn.disabled) {
+                    loopBtn.addEventListener('click', () => {
+                        loopBtn.classList.toggle('text-orange-100');
+                        if (activeAudios[soundId]) {
+                            activeAudios[soundId].audio.loop = loopBtn.classList.contains('text-orange-100');
+                        }
+                    });
+                }
+            });
+        }
+
+        // Toggle sound playback
+        function toggleSound(sound, playBtn) {
+            const soundId = sound.id;
+
+            // Se o som já está tocando, pausamos
+            if (activeAudios[soundId]) {
+                stopSound(soundId, playBtn);
+                return;
+            }
+
+            // Se não está tocando, vamos tocar
+            if (!isPremium && trialUsage[soundId]) {
+                showTrialModal();
+                return;
+            }
+
+            // Use real sound files
+            const soundUrl = getSoundUrl(sound.name);
+            const audio = new Audio(soundUrl);
+            audio.volume = 0.5;
+
+            // Fallback to dummy audio if file not found
+            audio.onerror = () => {
+                console.warn(`⚠️ Som ${sound.name} não encontrado, usando audio dummy`);
+                audio.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiKNwdZOvzz2YMjCCeD0fPZhjYHTz3/8+OFNQdnN/fz3IYgC0dKv3vxdSUMeVbXU7qzVBLJnq6FdE0hGyA06k0a...';
+                audio.play().catch(e => console.error('Erro ao reproduzir dummy:', e));
+            };
+
+            // Reproduzir
+            audio.play().then(() => {
+                // Armazenar áudio ativo
+                activeAudios[soundId] = {
+                    audio: audio,
+                    playBtn: playBtn,
+                    loop: false
+                };
+
+                // Atualizar UI
+                playBtn.innerHTML = '<i class="fas fa-pause text-white"></i>';
+                playBtn.closest('.sound-card').classList.add('ring-2', 'ring-orange-500');
+
+                // Configurar loop
+                if (playBtn.closest('.sound-card').querySelector('.loop-btn').classList.contains('text-orange-100')) {
+                    activeAudios[soundId].loop = true;
+                }
+
+                // Configurar volume
+                const volumeSlider = playBtn.closest('.sound-card').querySelector('.volume-slider');
+                if (volumeSlider) {
+                    audio.volume = volumeSlider.value / 100;
+                }
+
+                // Iniciar timer de trial se necessário
+                if (!isPremium && !trialUsage[soundId]) {
+                    trialTimers[soundId] = setTimeout(() => {
+                        trialUsage[soundId] = true;
+                        localStorage.setItem('relax_trial', JSON.stringify(trialUsage));
+                        stopSound(soundId, playBtn);
+                        renderSounds();
+                        showTrialModal();
+                    }, 120000); // 2 minutos
+                }
+
+            }).catch(error => {
+                console.error('❌ Erro ao reproduzir áudio:', error);
+                showPopup('Erro de Reprodução', 'Não foi possível reproduzir o áudio. Verifique sua conexão.', 'error');
+            });
+        }
+
+        // Parar um som específico
+        function stopSound(soundId, playBtn) {
+            if (activeAudios[soundId]) {
+                activeAudios[soundId].audio.pause();
+                delete activeAudios[soundId];
+
+                if (trialTimers[soundId]) {
+                    clearTimeout(trialTimers[soundId]);
+                    delete trialTimers[soundId];
+                }
+
+                if (playBtn) {
+                    playBtn.innerHTML = '<i class="fas fa-play text-white"></i>';
+                    playBtn.closest('.sound-card').classList.remove('ring-2', 'ring-orange-500');
+                }
+            }
+        }
+
+        // Parar todos os sons
+        function stopAllSounds() {
+            Object.keys(activeAudios).forEach(soundId => {
+                const sound = activeAudios[soundId];
+                sound.audio.pause();
+                if (sound.playBtn) {
+                    sound.playBtn.innerHTML = '<i class="fas fa-play text-white"></i>';
+                    sound.playBtn.closest('.sound-card').classList.remove('ring-2', 'ring-orange-500');
+                }
+
+                if (trialTimers[soundId]) {
+                    clearTimeout(trialTimers[soundId]);
+                    delete trialTimers[soundId];
+                }
+            });
+
+            activeAudios = {};
+            trialTimers = {};
+        }
+
+        // Show modals
+        function showPaymentModal() {
+            document.getElementById('payment-modal').classList.remove('hidden');
+            document.getElementById('payment-modal').classList.add('flex');
+        }
+
+        function hidePaymentModal() {
+            document.getElementById('payment-modal').classList.add('hidden');
+            document.getElementById('payment-modal').classList.remove('flex');
+        }
+
+        function showPixModal() {
+            hidePaymentModal();
+            document.getElementById('pix-modal').classList.remove('hidden');
+            document.getElementById('pix-modal').classList.add('flex');
+        }
+
+        function hidePixModal() {
+            document.getElementById('pix-modal').classList.add('hidden');
+            document.getElementById('pix-modal').classList.remove('flex');
+        }
+
+        function showTrialModal() {
+            document.getElementById('trial-modal').classList.remove('hidden');
+            document.getElementById('trial-modal').classList.add('flex');
+        }
+
+        function hideTrialModal() {
+            document.getElementById('trial-modal').classList.add('hidden');
+            document.getElementById('trial-modal').classList.remove('flex');
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUserStatus();
+            renderSounds();
+
+            // Category buttons
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.category-btn').forEach(b => {
+                        b.classList.remove('bg-gradient-to-r', 'from-orange-600', 'to-amber-600');
+                    });
+                    btn.classList.add('bg-gradient-to-r', 'from-orange-600', 'to-amber-600');
+                    currentCategory = btn.dataset.category;
+                    renderSounds();
+                });
+            });
+
+            // Payment buttons
+            document.getElementById('unlock-btn').addEventListener('click', showPaymentModal);
+            document.getElementById('close-payment-btn').addEventListener('click', hidePaymentModal);
+            document.getElementById('pix-payment-btn').addEventListener('click', showPixModal);
+            document.getElementById('close-pix-btn').addEventListener('click', () => {
+                hidePixModal();
+                showPaymentModal();
+            });
+
+            // Trial modal buttons
+            document.getElementById('unlock-from-trial-btn').addEventListener('click', () => {
+                hideTrialModal();
+                showPaymentModal();
+            });
+            document.getElementById('close-trial-btn').addEventListener('click', hideTrialModal);
+
+            // Copy Pix key
+            document.getElementById('copy-pix-btn').addEventListener('click', () => {
+                navigator.clipboard.writeText('68651145-b883-47c8-99e7-c0eec325fe31');
+                showPopup('Chave Copiada', 'Chave Pix copiada para a área de transferência!', 'success');
+            });
+
+            // Parar todos os sons
+            document.getElementById('stop-all-btn').addEventListener('click', stopAllSounds);
+
+            // Botão do WhatsApp para pegar código
+            document.getElementById('whatsapp-btn').addEventListener('click', () => {
+                const message = encodeURIComponent('Olá, me escrevi no Relaxapp. Gostaria que me enviasse o código único para que eu possa me tornar Premium.');
+                window.open(`https://wa.me/5599991948817?text=${message}`, '_blank');
+            });
+        });
+
+        // Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .catch(error => {
+                    console.log('❌ Service Worker registration failed:', error);
+                });
+        }
+
+        // Prevent sleep/screen lock when audio is playing
+        let wakeLock = null;
+
+        async function requestWakeLock() {
+            try {
+                if ('wakeLock' in navigator) {
+                    wakeLock = await navigator.wakeLock.request('screen');
+                    console.log('🔓 Wake lock ativado');
+                }
+            } catch (err) {
+                console.log('⚠️ Wake lock não suportado:', err);
+            }
+        }
+
+        function releaseWakeLock() {
+            if (wakeLock) {
+                wakeLock.release();
+                wakeLock = null;
+                console.log('🔒 Wake lock liberado');
+            }
+        }
+
+        // Request wake lock when audio starts
+        document.addEventListener('play', requestWakeLock, true);
+        document.addEventListener('pause', releaseWakeLock, true);
+    </script>
+</body>
+
+</html>
